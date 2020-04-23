@@ -11,7 +11,7 @@ router.get("/", async (req, res) => {
 });
 
 router.get("/items", (req, res) => {
-  res.render("./post/add");
+  //res.render("./template/add");
 });
 
 //create posts
