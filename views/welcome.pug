@@ -1,17 +1,8 @@
-doctype html
-html
-    head
-        title Urban Collection
-    body
-        h1 Welcome to urban collection
+extends ./partials/layout
 
-doctype html
-html(lang="en")
-  head
-    title = UrbanCollection
-    
-  body
-    h1 Welcome to Urban collection. where variety meets owners
-    #container.col
-      
-      p strong focus on performance and powerful features.
+block content
+
+    h1 Welcome to Urban collection
+    ul
+      each product, i in products
+        li= product.name 
