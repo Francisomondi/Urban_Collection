@@ -1,89 +1,53 @@
 const express = require('express');
-const Users = require('../models/User');
-
 const router = express.Router();
+const bcrypt = require('bcryptjs');
+const passport = require('passport');
 
-router.get('/', async (req, res) => {
-    try {
-       const users = await Users.find();
-       res.json(users); 
-    } 
-    catch (error) {
-        throw error;
-    }
+router.get('/', (req, res) => {
+    res.render('./users/register');
 });
-
-router.get("/register", (req, res) => {
-    res.send('this the register page');
+router.get('/login', (req, res) => {
+    res.render('./users/login');
+});
+router.get('/register',(req, res) => {
+    res.render('./users/register');
     
 });
 
-router.get("/login", (req, res) => {
-    res.send('this the login page');
+router.post('/register', (req,res)=>{
+    const name = req.body.name;
+    const username = req.body.username;
+    const email = req.body.email;
+    const phone = req.body.phone;
+    const password = req.body.password;
+    const password2 = req.body.password2
 
-});
+   const errors = [];
 
-//create user
-router.post("/register", async (req, res) => {
-    const users = new Users({
-        fullname: req.body.fullname,
-        username: req.body.username,
-        email: req.body.email,
-        phone: req.body.phone
-
-     
-
-    });
-    let errors = [];
-    //check required fields
-    if(!fullname || !username || !email || phone){
-        errors.push({msg: 'all fields reqired'});
+     //check required fields
+    if (!name || !username || !email || !phone || !password || !password2){
+        errors.push({msg: 'All fields are required'});
     }
 
-    //chek if passwords match
-    if(password != password2){
-        errors.push({msg:'passwords do not match'});
+    //check passwords match
+    if(password !==password2){
+      errors.push({msg: 'passwords do not match'});  
     }
-
-    try{
-        const savedUser = await users.save();
-        res.json(savedUser);
-
-    }catch(error){
-        throw error;
-    }   
-});
-
-//get back a specific user
-router.get("/:id", async (req, res) => {
-    try {
-        
-    } catch (error) {
-        
+    if (errors.length > 0) {
+        res.render('users/register',{
+            errors,
+            name,
+            username,
+            email,
+            phone,
+            password,
+            password2
+        });
     }
-});
-
-//edit post
-router.get("/edit/:id", async (req, res) => {
-    try {
-        
-    } catch (error) {
-       
+    else{
+        res.redirect('/users/login');
     }
-});
-
-//update posts
-router.post("/edit/:id", async (req, res) => {
     
-     try {
-     }catch(error){
-        
-     }
+ 
 });
-
-//remove posts
-router.delete("/:id", async (req, res) => {
-    
-});
-
 module.exports = router;

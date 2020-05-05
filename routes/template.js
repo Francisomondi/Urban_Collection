@@ -4,14 +4,14 @@ const router = express.Router();
 
 router.get("/", async (req, res) => {
   try {
-    res.send('the templates home');
+    res.render('template/template');
   } catch (error) {
    console.log('it doesnt work');
   }
 });
 
-router.get("/items", (req, res) => {
-  //res.render("./template/add");
+router.get("/add", (req, res) => {
+  res.render("./template/add");
 });
 
 //create posts
