@@ -4,9 +4,9 @@ const router = express.Router();
 
 router.get("/", async (req, res) => {
   try {
-    //some code
+    res.send('the templates home');
   } catch (error) {
-   //some error code
+   console.log('it doesnt work');
   }
 });
 
