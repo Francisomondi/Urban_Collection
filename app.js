@@ -24,7 +24,6 @@ app.use(express.urlencoded({extended: false}));
 
 
 //set up path to views
-
 app.set('views', path.join(__dirname, 'views'));
 app.use(expressLayouts);
  app.set('view engine', 'ejs');
@@ -36,16 +35,20 @@ app.use(express.static(path.join(__dirname, 'public')));
 //import routes
 const usersRoute = require('./routes/user');
 const welcomeRoute = require('./routes/welcome');
+const productRoute = require('./routes/product');
+const manufactureRoute = require('./routes/manufacture');
+const categoryRoute = require('./routes/category');
 
-
-
-app.use('/users', usersRoute);
+app.use('/products', productRoute);
 app.use('/', welcomeRoute);
+app.use('/users', usersRoute);
+app.use('/manufactures', manufactureRoute);
+app.use('/categories', categoryRoute);
+
 
 app.get('/dashboard', (req, res) => {
     res.render('./dashboard');
 });
-
 
 //listen to a server
 const port = process.env.PORT || 3000;
