@@ -36,7 +36,7 @@ router.post('/add', async (req, res) => {
 
      try{
          const products = await product.save();
-         res.redirect('./products/index', 
+         res.render('./products/index', 
          {
              products: products
          });

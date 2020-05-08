@@ -11,13 +11,11 @@ router.get('/', async (req, res) => {
 
     try {
         const users = await User.find();
-        res.render('./users/index', {
+        res.render('users/index', {
             users: users
         });
-
     } catch (error) {
         res.json({ message: error });
-
     }
 });
 router.get('/login', (req, res) => {

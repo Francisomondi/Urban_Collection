@@ -1,7 +1,9 @@
 <div class="container">
     <ul class="list-group">
         <% products.forEach((product)=>{%>
+        <a href="/products/<%= product.id %>">
             <li class="list-group-item"><%= product.name %></li>
+        </a>
         <% })%>
 
     </ul>
