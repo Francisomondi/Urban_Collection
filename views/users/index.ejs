@@ -1,0 +1,10 @@
+<div class="container">
+    <ul class="list-group">
+        <% users.forEach((user)=>{%>
+        <a href="/users/<%= user.id %>">
+            <li class="list-group-item"><%= user.fullname %></li>
+        </a>
+        <% })%>
+
+    </ul>
+</div>

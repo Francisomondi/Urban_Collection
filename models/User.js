@@ -17,10 +17,18 @@ const userSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    password: {
+        type: String,
+        required: true
+    },
+    password2: {
+        type: String,
+        required: true
+    },
     date: {
         type: Date,
         default: Date.now()
     }
 });
 
-const User = module.exports = mongoose.model('users', userSchema);
+ module.exports = mongoose.model('users', userSchema);
