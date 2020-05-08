@@ -5,7 +5,7 @@ const path = require ('path');
 const expressLayouts = require('express-ejs-layouts');  
 require("dotenv/config");
 
-mongoose.connect(process.env.DB_CONNECT, 
+mongoose.connect('mongodb://localhost/urban_collection', 
     {
         useNewUrlParser: true,
         useUnifiedTopology: true

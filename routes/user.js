@@ -6,9 +6,20 @@ const passport = require('passport');
 const User = require ('../models/User');
 
 
-router.get('/', (req, res) => {
-    res.render('users/register');
-}); 
+//GET BACK ALL THE POSTS
+router.get('/', async (req, res) => {
+
+    try {
+        const users = await User.find();
+        res.render('./users/index', {
+            users: users
+        });
+
+    } catch (error) {
+        res.json({ message: error });
+
+    }
+});
 router.get('/login', (req, res) => {
     res.render('users/login');
 });

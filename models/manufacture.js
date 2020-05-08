@@ -28,4 +28,4 @@ const manufactureSchema = mongoose.Schema({
     }
 });
 
-const manufacture = module.exports = mongoose.model("manufactures", manufactureSchema);
+ module.exports = mongoose.model("manufactures", manufactureSchema);

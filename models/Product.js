@@ -13,11 +13,11 @@ const productSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  product_manufacture: {
+  manufacture: {
     type: String,
     required: true,
   },
-  product_category: {
+  category: {
     type: String,
     required: true,
   },
@@ -31,4 +31,4 @@ const productSchema = mongoose.Schema({
   },
 });
 
-const Product = module.exports = mongoose.model("procucts", productSchema);
+module.exports = mongoose.model("products", productSchema);
