@@ -1,3 +1,4 @@
+
 (function ($) {
     'use strict';
 
@@ -161,4 +162,11 @@ var slider = new Slider('#ex2', {});
 
 $(function () {
   $('[data-toggle="tooltip"]').tooltip()
-})
+});
+
+$(document).ready(function(){
+  $('.delete-product').on('click',function(){
+      $target= $(e.target);
+      console.log($target.attr('data-id'));
+  });
+});

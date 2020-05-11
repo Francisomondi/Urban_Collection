@@ -90,7 +90,7 @@ router.post('/edit/:id', async (req, res) => {
              throw error;
          }
          else{
-             res.render('welcome',{products:products});
+             res.render('products/show',{products:products});
          }
 
      });   

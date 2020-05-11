@@ -3,6 +3,10 @@ const app = express();
 const mongoose = require('mongoose');
 const path = require ('path');
 const expressLayouts = require('express-ejs-layouts');  
+const session = require('express-session');
+const expressValidator = require('express-validator');
+const flash = require('connect-flash');
+
 require("dotenv/config");
 
 mongoose.connect('mongodb://localhost/urban_collection', 
@@ -18,6 +22,25 @@ mongoose.connect('mongodb://localhost/urban_collection',
         }
     });
 
+
+//set up public folder
+app.use(express.static(path.join(__dirname, 'public')));
+
+//express session middleware
+app.use(session({
+    secret: 'francis',
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: true }
+}));
+
+//express messages middleware
+app.use(require('connect-flash')());
+app.use(function (req, res, next) {
+    res.locals.messages = require('express-messages')(req, res);
+    next();
+});
+
 //express body-parser 
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
@@ -28,9 +51,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(expressLayouts);
  app.set('view engine', 'ejs');
  
- //set up public folder
-app.use(express.static(path.join(__dirname, 'public')));
-
+ 
 
 //import routes
 const usersRoute = require('./routes/user');
