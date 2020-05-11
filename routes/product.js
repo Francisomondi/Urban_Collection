@@ -49,12 +49,53 @@ router.post('/add', async (req, res) => {
 router.get('/:id', async(req,res)=>{
     try{
         const products = await Product.findById(req.params.id);
-        res.render('./products/show',{products:products});
+        res.render('./products/show',
+            {
+                products:products
+            });
     }
     catch(error){
         throw error;
     }
    
 });
+router.get('/edit/:id', async (req, res) => {
+    try {
+        const products = await Product.findById(req.params.id);
+        res.render('products/edit',
+            {
+                products: products
+            });
+    }
+    catch (error) {
+        throw error;
+    }
+
+});
+
+
+//update product
+router.post('/edit/:id', async (req, res) => {
+    const products = {};
+        products.name= req.body.name;
+        products.description= req.body.description;
+        products.price= req.body.price;
+        products.manufacture= req.body.manufacture;
+        products.category= req.body.category;
+        products.image= req.body.image;
+    
+     const querry= {_id: req.params.id};
+     Product.updateOne(querry,products,(error)=>{
+         if(error){
+             throw error;
+         }
+         else{
+             res.render('welcome',{products:products});
+         }
+
+     });   
+   
+});
+
 
 module.exports = router;

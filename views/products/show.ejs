@@ -1,10 +1,19 @@
 <div class="container">
-    show single product
+   
+   
+
     <div class="container">
+        <h1><%= products.name %></h1>
+        <p><%= products.description %></p>
+        <h3><%= products.price %></h3>
+        <h5><%= products._id %></h5>
         <ul class="list-group">
            
             <li class="list-group-item"><%= products.date %></li>
            
         </ul>
     </div>
+    <br>
+    <a class="btn btn-info" href="/products/edit/<%=products._id%>" >Edit </a>
+    <a class="btn btn-danger delete-product", data-id = <%=products._id%> , href="#">Delete </a>
 </div>
