@@ -1,19 +1,11 @@
-<div class="container">
-   
-   
 
-    <div class="container">
-        <h1><%= products.name %></h1>
-        <p><%= products.description %></p>
-        <h3><%= products.price %></h3>
-        <h5><%= products._id %></h5>
-        <ul class="list-group">
-           
-            <li class="list-group-item"><%= products.date %></li>
-           
-        </ul>
-    </div>
-    <br>
-    <a class="btn btn-info" href="/products/edit/<%=products._id%>" >Edit </a>
-    <a class="btn btn-danger delete-product", data-id = <%= products._id %> , href="#">Delete </a>
+<%- include ('../layouts/header') %>
+<div class="container">
+    <h2 class="mb-2"><%= products.name %></h2>
+    
+    <h6 class="text-muted mb-2"><%= products.date.toLocaleString() %></h6>
+
+    <a href="/products" class="btn btn-primary">All products</a>
+    <a href="/products/edit/<%= products.id%>" class="btn btn-info">Edit product</a>
 </div>
+<%- include ('../layouts/footer') %>

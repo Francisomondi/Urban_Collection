@@ -1,11 +1,37 @@
+<%- include ('../layouts/header') %>
 <div class="container">
-    <ul class="list-group">
-        
-        <% products.forEach((product)=>{%>
-        <a href="/products/<%= product.id %>">
-            <li class="list-group-item"><%= product.name %></li>
-        </a>
-        <% })%>
+  
+  <% if(products.length < 1) { %>
+    <div class="card mt-4">
+      <div class="card-body">
+        <div class="cart-title">
+          <h2>No products found</h2>
+        </div>
+      </div>
+    
+    </div>
+     
+    <% } %>
 
-    </ul>
-</div>
+  <% products.forEach((product)=> { %>
+   
+  <div class="card mt-4">
+    <div class="card-body">
+      <div class="cart-title">
+         <h2><%= product.name %></h2> 
+      </div>
+      <div class="card-text mb-2">
+          <%= product.description %>
+      </div>
+
+      <a href="/products/<%=product.id%>" class="btn btn-primary"> View Product</a>
+     <form action="/products/<%= product.id%>?_method=DELETE" method="POST" class="d-inline">
+      <button class="btn btn-danger" type="submit">Delete</button>
+     </form>  
+    </div>
+    
+  </div>
+  <% }); %>
+  
+
+<%- include ('../layouts/footer') %> %>
