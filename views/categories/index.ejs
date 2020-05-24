@@ -1,3 +1,43 @@
+<%- include ('../layouts/header') %>
 <div class="container">
-    <h1>this is the categories</h1>
-</div>
+
+    <% if(categories.length < 1) { %>
+    <div class="card mt-4">
+        <div class="card-body">
+            <div class="cart-title">
+                <h2>No category Added</h2>
+            </div>
+        </div>
+
+    </div>
+
+    <% } %>
+
+    <% categories.forEach((category)=> { %>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><%= category.name %></td>
+                <td><a href="/categories/<%=category.id%>" class="btn btn-primary"> View category</a></td>
+                <td>
+                    <form action="/categories/<%= category.id%>?_method=DELETE" method="POST" class="d-inline">
+                        <button class="btn btn-danger" type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        </tbody>
+
+    </table>
+
+    
+    <% }); %>
+
+
+    <%- include ('../layouts/footer') %> %>
