@@ -14,6 +14,27 @@
     <% } %>
 
   <% products.forEach((product)=> { %>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= product.name %></td>
+      <td><%= product.description %></td>
+      <td><a href="/products/<%=product.id%>" class="btn btn-primary"> View Product</a></td>
+      <td><form action="/products/<%= product.id%>?_method=DELETE" method="POST" class="d-inline">
+        <button class="btn btn-danger" type="submit">Delete</button>
+      </form> </td>
+    </tr>
+  </tbody>
+
+</table>
    
   <div class="card mt-4">
     <div class="card-body">
@@ -24,10 +45,8 @@
           <%= product.description %>
       </div>
 
-      <a href="/products/<%=product.id%>" class="btn btn-primary"> View Product</a>
-     <form action="/products/<%= product.id%>?_method=DELETE" method="POST" class="d-inline">
-      <button class="btn btn-danger" type="submit">Delete</button>
-     </form>  
+     
+      
     </div>
     
   </div>

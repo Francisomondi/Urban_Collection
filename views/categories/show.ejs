@@ -1,0 +1,11 @@
+
+<%- include ('../layouts/header') %>
+<div class="container">
+    <h2 class="mb-2"><%= categories.name %></h2>
+    
+    <h6 class="text-muted mb-2"><%= categories.date.toLocaleString() %></h6>
+
+    <a href="/categories" class="btn btn-primary">All categories</a>
+    <a href="/categories/edit/<%= categories.id%>" class="btn btn-info">Edit product</a>
+</div>
+<%- include ('../layouts/footer') %>
