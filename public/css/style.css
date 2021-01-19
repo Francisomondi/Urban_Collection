@@ -1,6 +1,9 @@
 p{
     color: black;
 }
-.navbarCollapse a{
+ a{
     color: red important!;
+}
+nav button{
+    margin: 6px;
 }

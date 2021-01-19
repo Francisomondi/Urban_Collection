@@ -3,7 +3,6 @@ const router = express.Router();
 //model
 const Category = require('../models/Category');
 
-
 //fetch all categories
 router.get('/', async (req, res) => {
     const categories = await Category.find();
@@ -42,7 +41,7 @@ router.post('/add', async (req, res) => {
              } catch (error) {
                  res.render('categories/add', {
                      categories: categories,
-                     error:error
+                     error:eror
                  });
              }
              
