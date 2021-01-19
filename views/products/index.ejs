@@ -15,6 +15,7 @@
 
   <% products.forEach((product)=> { %>
 <table class="table table-striped">
+  
   <thead>
     <tr>
       <th>Name</th>
@@ -24,6 +25,7 @@
     </tr>
   </thead>
   <tbody>
+    
     <tr>
       <td><%= product.name %></td>
       <td><%= product.description %></td>
@@ -36,20 +38,6 @@
 
 </table>
    
-  <div class="card mt-4">
-    <div class="card-body">
-      <div class="cart-title">
-         <h2><%= product.name %></h2> 
-      </div>
-      <div class="card-text mb-2">
-          <%= product.description %>
-      </div>
-
-     
-      
-    </div>
-    
-  </div>
   <% }); %>
   
 
